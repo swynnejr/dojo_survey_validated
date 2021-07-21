@@ -11,6 +11,8 @@ def index():
 
 @app.route('/process', methods = ['POST'])
 def confirmation():
+    if not Response.validate_response(request.form):
+        return redirect('/')
     session['name'] = request.form['name']
     session['location'] = request.form['location']
     session['language'] = request.form['language']

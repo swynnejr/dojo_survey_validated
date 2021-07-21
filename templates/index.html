@@ -9,7 +9,13 @@
 <body>
     <h1>Thank you for taking the Dojo Survey!</h1>
     <h3>Create a User</h3>
-    
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     <form action="/process" method="POST">
     <label for='name'>Name:</label>
     <input type="text" name="name" style="margin: 0px 5px;">
